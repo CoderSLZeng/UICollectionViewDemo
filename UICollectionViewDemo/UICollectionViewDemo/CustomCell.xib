@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="jFP-uA-EMQ" customClass="CustomCell" customModule="UICollectionViewDemo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="76" height="113"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="76" height="113"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CLb-pq-ddn">
+                        <rect key="frame" x="5" y="5" width="66" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="v6Q-J8-MiF"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zvq-SW-T7h">
+                        <rect key="frame" x="0.0" y="55" width="76" height="38"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="38G-gF-kpU">
+                        <rect key="frame" x="0.0" y="93" width="76" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="csK-76-TEf"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <state key="normal" title="下载" backgroundImage="buttongreen"/>
+                        <state key="highlighted" backgroundImage="buttongreen_highlighted"/>
+                    </button>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Zvq-SW-T7h" secondAttribute="trailing" id="5bX-uj-k1Z"/>
+                <constraint firstItem="CLb-pq-ddn" firstAttribute="top" secondItem="jFP-uA-EMQ" secondAttribute="top" constant="5" id="BIe-9K-Ven"/>
+                <constraint firstItem="Zvq-SW-T7h" firstAttribute="top" secondItem="CLb-pq-ddn" secondAttribute="bottom" id="Nzb-UR-WQn"/>
+                <constraint firstItem="CLb-pq-ddn" firstAttribute="leading" secondItem="jFP-uA-EMQ" secondAttribute="leading" constant="5" id="QwU-dw-Ox3"/>
+                <constraint firstItem="38G-gF-kpU" firstAttribute="leading" secondItem="jFP-uA-EMQ" secondAttribute="leading" id="WHQ-ua-lwc"/>
+                <constraint firstAttribute="trailing" secondItem="CLb-pq-ddn" secondAttribute="trailing" constant="5" id="YZw-N2-8r3"/>
+                <constraint firstAttribute="trailing" secondItem="38G-gF-kpU" secondAttribute="trailing" id="hPH-x2-UWb"/>
+                <constraint firstItem="38G-gF-kpU" firstAttribute="top" secondItem="Zvq-SW-T7h" secondAttribute="bottom" id="rUo-8K-5wa"/>
+                <constraint firstItem="Zvq-SW-T7h" firstAttribute="leading" secondItem="jFP-uA-EMQ" secondAttribute="leading" id="vTv-ad-nbh"/>
+                <constraint firstAttribute="bottom" secondItem="38G-gF-kpU" secondAttribute="bottom" id="xBs-e9-YGq"/>
+            </constraints>
+            <size key="customSize" width="76" height="113"/>
+            <connections>
+                <outlet property="contentImageView" destination="CLb-pq-ddn" id="SoL-tE-K3z"/>
+                <outlet property="contentLabel" destination="Zvq-SW-T7h" id="MZ1-DB-naS"/>
+                <outlet property="downloadButton" destination="38G-gF-kpU" id="Wth-eO-lXm"/>
+            </connections>
+            <point key="canvasLocation" x="335" y="441.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="buttongreen" width="193" height="81"/>
+        <image name="buttongreen_highlighted" width="193" height="81"/>
+    </resources>
+</document>
