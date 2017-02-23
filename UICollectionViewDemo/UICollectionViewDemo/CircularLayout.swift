@@ -27,6 +27,7 @@ class CircularLayout: UICollectionViewLayout {
     //==========================================================================================================
 
     /**
+     一些初始化工作最好在这里实现
      首先被调用，一般在该方法中设定一些必要的layout的结构和初始需要的参数等
      */
     override func prepareLayout() {
@@ -45,6 +46,8 @@ class CircularLayout: UICollectionViewLayout {
     
     /**
      返回collectionView的内容区域的总大小 （不是可见区域）
+     只要显示的边界发生改变就重新布局:
+     内部会重新调用prepareLayout和layoutAttributesForElementsInRect方法获得所有cell的布局属性
      */
     override func collectionViewContentSize() -> CGSize {
         guard let size = _collectionSize else
@@ -97,9 +100,16 @@ class CircularLayout: UICollectionViewLayout {
             return nil
         }
         
-        let x = Double(center.x) + Double(radius) * cos(Double(2 * indexPath.item) * M_PI / Double(cellCount))
-        let y = Double(center.y) + Double(radius) * sin(Double(2 * indexPath.item) * M_PI / Double(cellCount))
-        attrs.center = CGPoint(x: CGFloat(x), y: CGFloat(y))
+        // 每个item之间的角度
+        let angleDelta = M_PI * 2 / Double(cellCount)
+        
+        // 计算当前item的角度
+        let angle = Double(indexPath.item) * angleDelta
+        
+        let x = Double(center.x) + Double(radius) * cos(angle)
+        let y = Double(center.y) + Double(radius) * sin(angle)
+        
+        attrs.center = CGPoint(x: x, y: y)
         
         return attrs
     }

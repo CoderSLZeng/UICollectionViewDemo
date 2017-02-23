@@ -463,9 +463,17 @@ layoutAttributesForItemAtIndexPath 对UICollectionViewLayoutAttributes 的一些
             return nil
         }
         
-        let x = Double(center.x) + Double(radius) * cos(Double(2 * indexPath.item) * M_PI / Double(cellCount))
-        let y = Double(center.y) + Double(radius) * sin(Double(2 * indexPath.item) * M_PI / Double(cellCount))
-        attrs.center = CGPoint(x: CGFloat(x), y: CGFloat(y))
+        // 每个item之间的角度
+        let angleDelta = M_PI * 2 / Double(cellCount)
+        
+        // 计算当前item的角度
+        let angle = Double(indexPath.item) * angleDelta
+        
+        let x = Double(center.x) + Double(radius) * cos(angle)
+        let y = Double(center.y) + Double(radius) * sin(angle)
+        
+        attrs.center = CGPoint(x: x, y: y)
+        
         
         return attrs
     }
