@@ -14,7 +14,7 @@ class CircularLayout: UICollectionViewLayout {
     // MARK: - 自定义基本属性
     //==========================================================================================================
 
-    private let ITEM_SIZE: CGFloat = 60.0
+    private let ITEM_SIZE: CGFloat = 70.0
     private var insertIndexPaths = [NSIndexPath]()
     
     private var _cellCount: Int?

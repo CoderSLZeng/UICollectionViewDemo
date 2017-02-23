@@ -11,7 +11,6 @@ import UIKit
 class CustomCell: UICollectionViewCell {
     @IBOutlet weak var contentImageView: UIImageView!
     @IBOutlet weak var contentLabel: UILabel!
-    @IBOutlet weak var downloadButton: UIButton!
     
     var image: UIImage? {
         didSet {

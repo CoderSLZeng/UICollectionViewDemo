@@ -41,7 +41,7 @@ class ViewController: UIViewController {
         // 布局
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = UICollectionViewScrollDirection.Vertical
-        layout.itemSize = CGSize(width: 60, height: 90)
+        layout.itemSize = CGSize(width: 60, height: 70)
         layout.minimumLineSpacing = 10.0 // 上下间隔
         layout.minimumInteritemSpacing = 5.0 // 左右间隔
         layout.headerReferenceSize = CGSize(width: 20, height: 20)
@@ -105,7 +105,6 @@ extension ViewController: UICollectionViewDataSource
         
         cell.image = items.image
         cell.text = items.name
-        cell.downloadButton.addTarget(self, action: #selector(ViewController.download(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         return cell
     }
     

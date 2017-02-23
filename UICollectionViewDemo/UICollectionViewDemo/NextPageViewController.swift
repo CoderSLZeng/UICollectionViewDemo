@@ -63,7 +63,7 @@ class NextPageViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "切换布局", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(self.changeLayout))
         
         // 添加手势
-        let tapRecognize = UITapGestureRecognizer(target: self, action: "hadleTap:")
+        let tapRecognize = UITapGestureRecognizer(target: self, action: #selector(self.hadleTap(_:)))
         collection.addGestureRecognizer(tapRecognize)
         
     }
@@ -76,10 +76,10 @@ class NextPageViewController: UIViewController {
         if layout is CircularLayout {
             layout = UICollectionViewFlowLayout()
             let flowLayout = (layout as! UICollectionViewFlowLayout)
-//            flowLayout.scrollDirection = UICollectionViewScrollDirection.Vertical
-            flowLayout.itemSize = CGSize(width: 60, height: 90)
+            flowLayout.itemSize = CGSize(width: 70, height: 70)
         } else {
             layout = CircularLayout()
+
         }
         
         self.collection.setCollectionViewLayout(layout, animated: true)
@@ -155,8 +155,9 @@ extension NextPageViewController: UICollectionViewDataSource
         
         cell.image = item.image
         cell.text = item.name
+
         
-        cell.layer.cornerRadius = 30
+        cell.layer.cornerRadius = 35
         cell.layer.masksToBounds = true
         cell.layer.borderWidth = 1
         cell.layer.borderColor = UIColor.blackColor().CGColor

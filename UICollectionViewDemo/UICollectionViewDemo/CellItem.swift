@@ -65,7 +65,7 @@ class CellItem: NSObject {
      */
     class func itemList() -> [CellItem]
     {
-        guard let pathFile = NSBundle.mainBundle().pathForResource("app", ofType: "plist") else
+        guard let pathFile = NSBundle.mainBundle().pathForResource("icons", ofType: "plist") else
         {
             print("plist文件不存在")
             return []
