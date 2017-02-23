@@ -8,11 +8,6 @@
 
 import UIKit
 
-//struct CellContent {
-//    var img: String
-//    var name: String
-//}
-
 class ViewController: UIViewController {
 
     //==========================================================================================================
@@ -26,22 +21,8 @@ class ViewController: UIViewController {
     // MARK: - 懒加载
     //==========================================================================================================
 
-    /// 存放cell属性的数组
-//    lazy var dict: [CellContent] = {
-//        ()-> [CellContent]
-//        in
-//        var dict = [CellContent]()
-//        
-//        for i in 0...9 {
-//            // dict.append(CellContent(img: "icon_0" + String(i), name: "程序" + String(i)))
-//            dict.append(CellContent(img: "icon_0\(i)", name: "程序\(i)"))
-//        }
-//        return dict
-//    
-//    }()
-    
     /// 存放Cell模型数据的数组
-    lazy var itemList: [CellItem] = {
+    lazy var itemsList: [CellItem] = {
         () -> [CellItem]
         in
         return CellItem.itemList()
@@ -60,7 +41,7 @@ class ViewController: UIViewController {
         // 布局
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = UICollectionViewScrollDirection.Vertical
-        layout.itemSize = CGSize(width: 80, height: 90)
+        layout.itemSize = CGSize(width: 60, height: 90)
         layout.minimumLineSpacing = 10.0 // 上下间隔
         layout.minimumInteritemSpacing = 5.0 // 左右间隔
         layout.headerReferenceSize = CGSize(width: 20, height: 20)
@@ -73,7 +54,6 @@ class ViewController: UIViewController {
         collection.contentInset = UIEdgeInsets(top: 60, left: 0, bottom: 0, right: 0)
         
         // 注册Cell
-//        collection.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: cellIdentifier)
         let nib = UINib(nibName: "\(CustomCell.self)", bundle: nil)
         collection.registerNib(nib, forCellWithReuseIdentifier: cellIdentifier)
         
@@ -94,6 +74,13 @@ class ViewController: UIViewController {
         
         self.navigationController?.pushViewController(NextPageViewController(), animated: true)
     }
+    
+    /**
+     开始下载
+     */
+    func download(button: UIButton) {
+        print(#function)
+    }
 
 }
 
@@ -105,7 +92,7 @@ extension ViewController: UICollectionViewDataSource
 {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 //        return 10
-        return itemList.count
+        return itemsList.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -113,25 +100,14 @@ extension ViewController: UICollectionViewDataSource
         // 从缓存池中获取cell
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath: indexPath) as! CustomCell
         
-        
         // 获取模型
-//        let content = self.dict[indexPath.item]
-//        cell.contentImageView.image = UIImage(named: content.img)
-//        cell.contentLabel.text = content.name
-        
-        let items = self.itemList[indexPath.item]
-        
-//        guard let image = items.icon else {
-//            return cell
-//        }
-//        cell.contentImageView.image = UIImage(named: image)
-        
-//        cell.contentImageView.image = items.image
-//        cell.contentLabel.text = items.name
+        let items = self.itemsList[indexPath.item]
         
         cell.image = items.image
         cell.text = items.name
-        
+        cell.downloadButton.addTarget(self, action: #selector(ViewController.download(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         return cell
     }
+    
+    
 }
