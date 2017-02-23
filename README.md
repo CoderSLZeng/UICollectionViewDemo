@@ -4,7 +4,7 @@
 
 本次要实现的两个效果
 
-![](/Users/Anthony/Desktop/UICollectionViewDemo/UICollectionViewDemo/Images/Snip20170223_1.gif)
+![](/Users/Anthony/Desktop/UICollectionViewDemo/UICollectionViewDemo/UICollectionViewDemo/README_IMG/Snip20170223_1.gif)
 
 第一个界面是一个普通的流布局 UICollectionViewFlowLayout， 第二个界面是自定义的一个圆形布局。加了点手势操作和动画。老规矩。后面会附上源码
 
@@ -105,13 +105,13 @@ registerNib:forSupplementaryViewOfKind:withReuseIdentifier:
 
 我们这里是自己用xib 画了个cell 
 
-![](/Users/Anthony/Desktop/UICollectionViewDemo/UICollectionViewDemo/Images/Snip20170223_2.png)
+![](/Users/Anthony/Desktop/UICollectionViewDemo/UICollectionViewDemo/UICollectionViewDemo/README_IMG/Snip20170223_2.png)
 
 一个很简单的cell ，把它的class 设置成我们自定义的M CustomCell, CustomCell继承自UICollectionViewCell ，把这两个拖成它的成员属性
 
 建议另新增两个成员属性，在其didSet中处理对应属性的业务，方便传出去
 
-![](/Users/Anthony/Desktop/UICollectionViewDemo/UICollectionViewDemo/Images/Snip20170223_3.png)
+![](/Users/Anthony/Desktop/UICollectionViewDemo/UICollectionViewDemo/UICollectionViewDemo/README_IMG/Snip20170223_3.png)
 
 ```
 import UIKit
@@ -297,7 +297,7 @@ lazy var itemsList: [CellItem] = {
 
 现在运行，第一个页面的效果就有了
 
-![](/Users/Anthony/Desktop/UICollectionViewDemo/UICollectionViewDemo/Images/Snip20170223_4.png)
+![](/Users/Anthony/Desktop/UICollectionViewDemo/UICollectionViewDemo/UICollectionViewDemo/README_IMG/Snip20170223_4.png)
 
 但让还有向UITableView中样很多的方法去设置别的，比如单个cell的大小
 
@@ -529,7 +529,7 @@ cell.layer.cornerRadius = 35
 
 运行程序，圆就出现了
 
-![](/Users/Anthony/Desktop/UICollectionViewDemo/UICollectionViewDemo/Images/Snip20170223_5.gif)
+![](/Users/Anthony/Desktop/UICollectionViewDemo/UICollectionViewDemo/UICollectionViewDemo/README_IMG/Snip20170223_5.gif)
 
 然后在然后给这个界面添加手势给这个界面添加手势
 
@@ -597,7 +597,7 @@ finalLayoutAttributesForDisappearingDecorationElementOfKind:atIndexPath
 
 默认的动画是这样的 
 
-![](/Users/Anthony/Desktop/UICollectionViewDemo/UICollectionViewDemo/Images/Snip20170223_6.gif)
+![](/Users/Anthony/Desktop/UICollectionViewDemo/UICollectionViewDemo/UICollectionViewDemo/README_IMG/Snip20170223_6.gif)
 
 可以自定义动画
 
@@ -639,7 +639,7 @@ finalLayoutAttributesForDisappearingDecorationElementOfKind:atIndexPath
 
 看下效果
 
-![](/Users/Anthony/Desktop/UICollectionViewDemo/UICollectionViewDemo/Images/Snip20170223_7.gif)
+![](/Users/Anthony/Desktop/UICollectionViewDemo/UICollectionViewDemo/UICollectionViewDemo/README_IMG/Snip20170223_7.gif)
 
 现在动画从中间散出去的
 (本实例使用xcode 7.3.1 ， Swift 3.0) 
