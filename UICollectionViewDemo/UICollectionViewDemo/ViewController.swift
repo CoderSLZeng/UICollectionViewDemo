@@ -40,8 +40,8 @@ class ViewController: UIViewController {
         
         // 布局
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = UICollectionViewScrollDirection.Vertical
-        layout.itemSize = CGSize(width: 60, height: 70)
+        layout.scrollDirection = UICollectionViewScrollDirection.Vertical // 滚动方向
+        layout.itemSize = CGSize(width: 60, height: 70) // 设置所有cell的size
         layout.minimumLineSpacing = 10.0 // 上下间隔
         layout.minimumInteritemSpacing = 5.0 // 左右间隔
         layout.headerReferenceSize = CGSize(width: 20, height: 20)
@@ -49,9 +49,9 @@ class ViewController: UIViewController {
         
         // collectionView
         let collection = UICollectionView(frame: view.frame, collectionViewLayout: layout)
-        collection.backgroundColor = UIColor.whiteColor()
-        collection.dataSource = self
-        collection.contentInset = UIEdgeInsets(top: 60, left: 0, bottom: 0, right: 0)
+        collection.backgroundColor = UIColor.whiteColor()  // 背景色
+        collection.dataSource = self   // 数据源
+        collection.contentInset = UIEdgeInsets(top: 60, left: 0, bottom: 0, right: 0) // 内边距
         
         // 注册Cell
         let nib = UINib(nibName: "\(CustomCell.self)", bundle: nil)
@@ -90,11 +90,26 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDataSource
 {
+    
+    /**
+     系统默认返回1个分区，可不写
+    // 设置分区个数
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+     */
+    
+    /**
+     设置每个分区元素个数
+     */
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 //        return 10
         return itemsList.count
     }
     
+    /**
+     设置元素内容
+     */
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 
         // 从缓存池中获取cell
@@ -107,6 +122,5 @@ extension ViewController: UICollectionViewDataSource
         cell.text = items.name
         return cell
     }
-    
     
 }

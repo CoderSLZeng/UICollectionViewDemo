@@ -9,9 +9,12 @@
 import UIKit
 
 class CustomCell: UICollectionViewCell {
+    /// 图标视图
     @IBOutlet weak var contentImageView: UIImageView!
+    /// 图标名称
     @IBOutlet weak var contentLabel: UILabel!
     
+    // 图片
     var image: UIImage? {
         didSet {
             guard let image = image else {
@@ -22,6 +25,7 @@ class CustomCell: UICollectionViewCell {
         }
     }
     
+    // 文字
     var text: String? {
         didSet {
             guard let text = text else {

@@ -47,6 +47,8 @@ class NextPageViewController: UIViewController {
         return collection
     }()
     
+    
+    /// 数据模型
     lazy var itemsList: [CellItem] = {
         () -> [CellItem]
         in
@@ -71,6 +73,9 @@ class NextPageViewController: UIViewController {
     //==========================================================================================================
     // MARK: - 处理监听事件
     //==========================================================================================================
+    /**
+     更改布局
+     */
     func changeLayout() {
         
         if layout is CircularLayout {
@@ -85,6 +90,11 @@ class NextPageViewController: UIViewController {
         self.collection.setCollectionViewLayout(layout, animated: true)
     }
     
+    /**
+     监听手势点击
+     
+     - parameter sender: 手势识别器
+     */
     func hadleTap(sender: UITapGestureRecognizer) {
         if sender.state == UIGestureRecognizerState.Ended {
             let tapPoint = sender.locationInView(self.collection)
@@ -93,7 +103,7 @@ class NextPageViewController: UIViewController {
             {
                 
                 print("删除点击的cell")
-                //
+                
                 /**
                  *  这个方法可以用来对collectionView中的元素进行批量的插入，删除，移动等操作，同时将触发collectionView所对应的layout的对应的动画
                  *  相应的动画由layout中的下列四个方法来定义：
@@ -127,11 +137,7 @@ class NextPageViewController: UIViewController {
                         self.collection.reloadData() // 刷新数据
                     })
                 })
-                
-                
             }
-            
-            
         }
     }
 

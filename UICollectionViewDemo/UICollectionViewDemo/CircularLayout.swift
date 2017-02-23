@@ -23,7 +23,7 @@ class CircularLayout: UICollectionViewLayout {
     private var _radius: CGFloat?
     
     //==========================================================================================================
-    // MARK: - 重写系统初始化函数
+    // MARK: - 重写父类的初始化函数
     //==========================================================================================================
 
     /**
@@ -103,11 +103,13 @@ class CircularLayout: UICollectionViewLayout {
         
         return attrs
     }
+    
     /**
      首先会调用prepareForCollectionViewUpdates，我们在这里拿到那个新增的NSIndexPath ，然后在这个方法中设置一些初始位置
      */
     override func initialLayoutAttributesForAppearingItemAtIndexPath(itemIndexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
         
+        // Must call super
         var attributes = super.initialLayoutAttributesForAppearingItemAtIndexPath(itemIndexPath)
         
         if self.insertIndexPaths.contains(itemIndexPath) {
