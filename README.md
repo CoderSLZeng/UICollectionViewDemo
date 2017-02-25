@@ -373,13 +373,18 @@ UICollectionViewLayout的功能为向UICollectionView提供布局信息，不仅
     // MARK: - 自定义基本属性
     //==========================================================================================================
 
+    /// item的大小
     private let ITEM_SIZE: CGFloat = 70.0
     private var insertIndexPaths = [NSIndexPath]()
     
+    /// cell的个数
     private var _cellCount: Int?
+    /// collection的尺寸
     private var _collectionSize: CGSize?
-    private var _center: CGPoint?
-    private var _radius: CGFloat?
+    /// 圆的中心点
+    private var _circleCenter: CGPoint?
+    /// 圆的半径
+    private var _circleRadius: CGFloat?
 ```
 重写父类函数的初始化一些基本信息
 
@@ -396,8 +401,8 @@ UICollectionViewLayout的功能为向UICollectionView提供布局信息，不仅
         }
         
         _cellCount = self.collectionView?.numberOfItemsInSection(0)
-        _center = CGPoint(x: frameSize.width * 0.5, y: frameSize.height * 0.5)
-        _radius = min(frameSize.width, frameSize.height) * 0.4
+        _circleCenter = CGPoint(x: frameSize.width * 0.5, y: frameSize.height * 0.5)
+        _circleRadius = min(frameSize.width, frameSize.height) * 0.4
         _collectionSize = frameSize
     }
 ```
@@ -448,12 +453,12 @@ layoutAttributesForItemAtIndexPath 对UICollectionViewLayoutAttributes 的一些
     override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
         let attrs = UICollectionViewLayoutAttributes(forCellWithIndexPath: indexPath)
         attrs.size = CGSize(width: ITEM_SIZE, height: ITEM_SIZE)
-        guard let center = _center else
+        guard let circleCenter = _circleCenter else
         {
             return nil
         }
         
-        guard let radius = _radius else
+        guard let circleRadius = _circleRadius else
         {
             return nil
         }
@@ -463,17 +468,16 @@ layoutAttributesForItemAtIndexPath 对UICollectionViewLayoutAttributes 的一些
             return nil
         }
         
-        // 每个item之间的角度
-        let angleDelta = M_PI * 2 / Double(cellCount)
-        
+        // 每个item之间的角度 M_PI = 180° ， 360° / cell的个数
+        let angleDelta = CGFloat(M_PI) * 2 / CGFloat(cellCount)
         // 计算当前item的角度
-        let angle = Double(indexPath.item) * angleDelta
+        let angle = CGFloat(indexPath.item) * angleDelta
         
-        let x = Double(center.x) + Double(radius) * cos(angle)
-        let y = Double(center.y) + Double(radius) * sin(angle)
+        let x = circleCenter.x + circleRadius * cos(angle)
+        // y值的加减影响的是显示方向 逆时针 - 顺时针 +
+        let y = circleCenter.y - circleRadius * sin(angle)
         
         attrs.center = CGPoint(x: x, y: y)
-        
         
         return attrs
     }
@@ -505,7 +509,7 @@ layoutAttributesForItemAtIndexPath 对UICollectionViewLayoutAttributes 的一些
 可以通过setCollectionViewLayout 方法来切换layout 
 
 ```
-//==========================================================================================================
+	 //==========================================================================================================
     // MARK: - 处理监听事件
     //==========================================================================================================
     /**
